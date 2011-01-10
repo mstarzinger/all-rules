@@ -36,6 +36,7 @@
 // Private API of Mail application.
 @interface AllRulesBundle (MVMailBundle)
 + (void)registerBundle;
++ (id)sharedInstance;
 @end
 
 @implementation AllRulesBundle
@@ -98,15 +99,32 @@
 }
 
 + (void)reapplyAllSortingRules:(id)sender {
+	// Triggers the mail routing operation by performing the appropriate
+	// operation in an asynchronous way.
+
+	// Detach a new worker thread.
+	[NSThread detachNewThreadSelector:@selector(performMessageRouting)
+							 toTarget:[self sharedInstance]
+						   withObject:NULL];
+}
+
+- (void)performMessageRouting {
 	// Actually performs the mail routing operation for the selected messages
-	// in a synchronous way.
+	// in a synchronous way. Note that this is the method that the swizzled
+	// shouldStopEvaluatingRules implementation will look for.
 
 	DLog(@"Bundle method activated.");
+
+	// Setup a new autorelease pool for our worker thread.
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
 	// Actually perform the message routing.
 	MessageViewer *viewer = [NSClassFromString(@"MessageViewer") frontmostMessageViewer];
 	MessageRouter *router = [NSClassFromString(@"MessageRouter") new];
 	[router routeMessages:[viewer selectedMessages] fromStores:[viewer _store]];
+
+	// Release the autorelease pool.
+	[pool release];
 
 	DLog(@"Bundle method finished.");
 }
@@ -124,10 +142,11 @@
 		return false;
 
 	// Check if we were called through this bundle.
+	NSString *searchSymbol = @"-[AllRulesBundle performMessageRouting]";
 	NSArray *callStackSymbols = [NSThread callStackSymbols];
 	for (int i = 0; i < [callStackSymbols count]; i++) {
 		NSString *symbol = [callStackSymbols objectAtIndex:i];
-		if ([symbol rangeOfString:@"reapplyAllSortingRules:"].location != NSNotFound) {
+		if ([symbol rangeOfString:searchSymbol].location != NSNotFound) {
 			DLog(@"Bundle prevented evaluation stop by rule.");
 			return false;
 		}
