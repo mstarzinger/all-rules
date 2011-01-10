@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.${PRODUCT_NAME:rfc1034Identifier}</string>
+	<string>org.antforge.${PRODUCT_NAME:rfc1034Identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -40,5 +40,10 @@
 	</dict>
 	<key>CFPlugInUnloadFunction</key>
 	<string></string>
+	<key>SupportedPluginCompatibilityUUIDs</key>
+	<array>
+		<string>857A142A-AB81-4D99-BECC-D1B55A86D94E</string><!-- Message framework 4.4 -->
+		<string>BDD81F4D-6881-4A8D-94A7-E67410089EEB</string><!-- Mail application 4.4 -->
+	</array>
 </dict>
 </plist>
