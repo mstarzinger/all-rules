@@ -19,7 +19,8 @@
 		0693E5F912DA1F81001A142A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0693E5FF12DA1FC0001A142A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0693E77012DA29A9001A142A /* MessageRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageRouter.h; sourceTree = "<group>"; };
-		0693E78112DA2B2C001A142A /* MessageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewer.h; sourceTree = "<group>"; };
+		0619200A16A1F41B00C478C2 /* MessageViewer_4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewer_4.h; sourceTree = "<group>"; };
+		0619200B16A1F41B00C478C2 /* MessageViewer_6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewer_6.h; sourceTree = "<group>"; };
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D576316048677EA00EA77CD /* AllRules.mailbundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllRules.mailbundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,7 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				0693E77012DA29A9001A142A /* MessageRouter.h */,
-				0693E78112DA2B2C001A142A /* MessageViewer.h */,
+				0619200A16A1F41B00C478C2 /* MessageViewer_4.h */,
+				0619200B16A1F41B00C478C2 /* MessageViewer_6.h */,
 				0693E5C512DA1EA8001A142A /* AllRulesBundle.h */,
 				0693E5C612DA1EA8001A142A /* AllRulesBundle.m */,
 			);

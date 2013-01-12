@@ -24,7 +24,8 @@
 #import <objc/runtime.h>
 
 #import "MessageRouter.h"
-#import "MessageViewer.h"
+#import "MessageViewer_4.h"
+#import "MessageViewer_6.h"
 
 #ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
@@ -118,10 +119,18 @@
 	// Setup a new autorelease pool for our worker thread.
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-	// Actually perform the message routing.
-	MessageViewer *viewer = [NSClassFromString(@"MessageViewer") frontmostMessageViewer];
+	// Determine version of the Mail application.
+	NSString* appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+
+	// Actually perform the message routing (depending on version).
 	MessageRouter *router = [NSClassFromString(@"MessageRouter") new];
-	[router routeMessages:[viewer selectedMessages] fromStores:[viewer _store]];
+	if ([appVersion compare:@"6.0" options:NSNumericSearch] == NSOrderedAscending) {
+		MessageViewer_4 *viewer = [NSClassFromString(@"MessageViewer") frontmostMessageViewer];
+		[router routeMessages:[viewer selectedMessages] fromStores:[viewer _store]];
+	} else {
+		MessageViewer_6 *viewer = [NSClassFromString(@"MessageViewer") frontmostMessageViewerWithOptions:0];
+		[router routeMessages:[viewer selectedMessages] fromStores:[[viewer tableManager] messageStore]];
+	}
 
 	// Release the autorelease pool.
 	[pool release];

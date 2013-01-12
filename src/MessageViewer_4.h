@@ -12,7 +12,7 @@
  *       Objective-C Garbage Collection: Unsupported
  */
 
-@interface MessageViewer : NSResponder
+@interface MessageViewer_4 : NSResponder
 
 + (void)initialize;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
