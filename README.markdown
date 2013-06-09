@@ -10,15 +10,27 @@ This can be useful to model additional rules, which are only evaluated
 explicitly when triggered by this bundle, but not automatically on all
 received mail.
 
+Availability:
+-------------
+
+The source of the bundle is available at GitHub as a standard Xcode project.
+Feel free to adapt it to your needs if necessary. I will also try to provide
+precompiled binaries from time to time for those of you who just want to use it
+out of the box.
+
+* Source: https://github.com/mstarzinger/all-rules
+* Binary: http://www.antforge.org/all-rules/download
+
 Compatibility:
 --------------
 
-This bundle was tested using the following environment, but might just as well
-work with similar versions. Let me know of your findings.
+This bundle was tested using several environments up to and including the
+following, but might just as well work with similar versions. Let me know of
+your findings.
 
-* Mac OS X Snow Leopard 10.6.6
-* Apple Mail 4.4
-* Message Framework 4.4
+* Mac OS X Mountain Lion 10.8.4
+* Apple Mail 6.5
+* Message Framework 6.5
 
 Related Bundles:
 ----------------
